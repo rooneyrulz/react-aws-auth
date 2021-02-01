@@ -1,20 +1,24 @@
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+// Components
+import SignIn from './components/auth/Signin';
+import SignUp from './components/auth/Signup';
+import Dashboard from './components/dashboard/Dashboard';
 
 const App = () => {
   return (
-    <div className='App' style={style.app}>
-      <h1>Welcome</h1>
-      <AmplifySignOut />
-    </div>
+    <BrowserRouter>
+      <header></header>
+      <main>
+        <Switch>
+          <Route exact path='/sign-in' component={SignIn} />
+          <Route exact path='/sign-up' component={SignUp} />
+          <Route exact path='/' component={Dashboard} />
+        </Switch>
+      </main>
+      <footer></footer>
+    </BrowserRouter>
   );
 };
 
-const style = {
-  app: {
-    width: '60%',
-    margin: '100px auto 0',
-    textAlign: 'center',
-  },
-};
-
-export default withAuthenticator(App);
+export default App;
