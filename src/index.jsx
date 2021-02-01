@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Amplify from 'aws-amplify';
 
-import App from './App';
 import config from './aws-exports.js';
 import AuthProvider from './contexts/AuthProvider';
+
+import App from './App';
+import './main.css';
 
 Amplify.configure(config);
 

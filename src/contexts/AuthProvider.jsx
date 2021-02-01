@@ -7,7 +7,8 @@ const AuthProvider = ({ children }) => {
   const [authState, dispatch] = React.useReducer(AuthReducer, {
     loading: true,
     isAuthenticated: null,
-    isSignedUp: null,
+    isIdentityConfirmed: null,
+    isSignedUp: true,
     user: null,
     errors: null,
   });

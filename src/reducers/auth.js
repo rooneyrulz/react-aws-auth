@@ -27,6 +27,7 @@ const authReducer = (state, action) => {
         loading: false,
         isSignedUp: false,
         isAuthenticated: true,
+        isIdentityConfirmed: true,
         user: payload,
         errors: null,
       };
@@ -37,16 +38,27 @@ const authReducer = (state, action) => {
         loading: false,
         isSignedUp: true,
         isAuthenticated: false,
+        isIdentityConfirmed: false,
         errors: null,
       };
 
-    case SIGN_IN_SUCCESS:
     case CONFIRM_EMAIL_SUCCESS:
       return {
         ...state,
         loading: false,
         isSignedUp: false,
+        isAuthenticated: false,
+        isIdentityConfirmed: true,
+        errors: null,
+      };
+
+    case SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isSignedUp: false,
         isAuthenticated: true,
+        isIdentityConfirmed: true,
         user: payload,
         errors: null,
       };
@@ -61,6 +73,7 @@ const authReducer = (state, action) => {
         loading: false,
         isSignedUp: false,
         isAuthenticated: false,
+        isIdentityConfirmed: false,
         user: {},
         errors: payload,
       };
