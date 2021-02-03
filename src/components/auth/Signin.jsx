@@ -34,7 +34,7 @@ const Signin = () => {
                   className='block text-grey-darker text-sm font-bold mb-2'
                   htmlFor='username'
                 >
-                  Username
+                  Username *
                 </label>
                 <Field name='username'>
                   {(props) => {
@@ -63,7 +63,7 @@ const Signin = () => {
                   className='block text-grey-darker text-sm font-bold mb-2'
                   htmlFor='password'
                 >
-                  Password
+                  Password *
                 </label>
                 <Field name='password'>
                   {(props) => {
