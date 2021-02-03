@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
     loading: true,
     isAuthenticated: null,
     isIdentityConfirmed: null,
-    isSignedUp: true,
+    isSignedUp: null,
     user: null,
     errors: null,
   });

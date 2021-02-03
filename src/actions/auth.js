@@ -11,16 +11,22 @@ import {
 } from '../actions/types';
 
 //   GET AUTH USER
-export const loadUser = () => async (dispatch) => {};
+export const loadUser = async (dispatch) => {
+  try {
+    
+  } catch (error) {
+
+  }
+};
 
 // SIGN UP
-export const signUp = () => async (dispatch) => {};
+export const signUp = async (dispatch) => {};
 
 // CONFIRM SIGN UP / CONFIRM EMAIL
-export const confirmSignUp = () => async (dispatch) => {};
+export const confirmSignUp = async (dispatch) => {};
 
 // SIGN IN
-export const signIn = () => async (dispatch) => {};
+export const signIn = async (dispatch) => {};
 
 // SIGN OUT
-export const signOut = () => async (dispatch) => {};
+export const signOut = async (dispatch) => {};
