@@ -1,3 +1,4 @@
+import { Auth } from 'aws-amplify';
 import {
   SET_LOADING,
   USER_LOADED,
@@ -13,9 +14,11 @@ import {
 //   GET AUTH USER
 export const loadUser = async (dispatch) => {
   try {
-    
+    const user = await Auth.currentAuthenticatedUser();
+    console.log(user);
   } catch (error) {
-
+    dispatch({ type: AUTH_ERROR });
+    throw error;
   }
 };
 
