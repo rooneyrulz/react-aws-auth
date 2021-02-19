@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import AuthContext from '../../contexts/AuthContext';
+import { signIn } from '../../actions/auth';
+
 const Signin = () => {
+  const { dispatch } = React.useContext(AuthContext);
   const initialValues = { username: '', password: '' };
 
   // Validation Schema
@@ -13,7 +17,7 @@ const Signin = () => {
   });
 
   const onSubmit = (value) => {
-    console.log(value);
+    dispatch(signIn(value, dispatch));
   };
 
   return (

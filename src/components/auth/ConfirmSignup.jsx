@@ -1,9 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import AuthContext from '../../contexts/AuthContext';
+import { confirmSignUp } from '../../actions/auth';
+
 const ConfirmSignup = () => {
+  const { dispatch } = React.useContext(AuthContext);
+  const history = useHistory();
   const initialValues = {
     username: '',
     code: '',
@@ -11,12 +16,10 @@ const ConfirmSignup = () => {
 
   const validationSchema = Yup.object({
     username: Yup.string().required('Username must not be empty!'),
-    code: Yup.number()
-      .integer()
-      .required('Code must not be empty!'),
+    code: Yup.string().required('Code must not be empty!'),
   });
 
-  const onSubmit = (value) => console.log(value);
+  const onSubmit = (value) => dispatch(confirmSignUp(value, dispatch, history));
 
   return (
     <div className='confirm__sign__up flex flex-col justify-center items-center min-h-screen'>
@@ -73,7 +76,7 @@ const ConfirmSignup = () => {
                     return (
                       <input
                         id='code'
-                        type='number'
+                        type='text'
                         className={`shadow appearance-none outline-none border-2 border-transparent rounded w-full py-2 px-3 text-grey-darker  ${
                           meta.touched && meta.error ? 'border-red-600 ' : null
                         }`}

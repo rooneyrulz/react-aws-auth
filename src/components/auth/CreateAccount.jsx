@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import AuthContext from '../../contexts/AuthContext';
+import { signUp } from '../../actions/auth';
+
 const CreateAccount = () => {
+  const { dispatch } = React.useContext(AuthContext);
   const initialValues = {
     username: '',
     email: '',
@@ -25,7 +29,17 @@ const CreateAccount = () => {
     password: Yup.string().required('Password must not be empty!'),
   });
 
-  const onSubmit = (value) => console.log(value);
+  const onSubmit = (value) => {
+    const data = {
+      username: value.username,
+      password: value.password,
+      attributes: {
+        email: value.email,
+        phone_number: value.phone,
+      },
+    };
+    dispatch(signUp(data, dispatch));
+  };
 
   return (
     <div className='sign__up flex flex-col justify-center items-center min-h-screen'>

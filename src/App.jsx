@@ -9,6 +9,8 @@ import { loadUser } from './actions/auth';
 import SignIn from './components/auth/Signin';
 import SignUp from './components/auth/Signup';
 import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
+import PublicRoute from './components/routing/PublicRoute';
 
 const App = () => {
   const { dispatch } = React.useContext(AuthContext);
@@ -21,9 +23,9 @@ const App = () => {
       <header></header>
       <main>
         <Switch>
-          <Route exact path='/sign-in' component={SignIn} />
-          <Route exact path='/sign-up' component={SignUp} />
-          <Route exact path='/' component={Dashboard} />
+          <PublicRoute exact path='/sign-in' component={SignIn} />
+          <PublicRoute exact path='/sign-up' component={SignUp} />
+          <PrivateRoute exact path='/' component={Dashboard} />
         </Switch>
       </main>
       <footer></footer>
